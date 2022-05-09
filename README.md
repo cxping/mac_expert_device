@@ -14,7 +14,7 @@ tree-sitter-stack-graphs = "0.1"
 
 ```
 
-Check out our [documentation](https://docs.rs/mac_expert_device) for more details on how to use this library.
+Check out our [documentation](https://docs.rs/mac_expert_device/latest/x86_64-apple-darwin/mac_expert_device/all.html) for more details on how to use this library.
 
 
 ## Simple 
