@@ -9,9 +9,9 @@ mod tests {
     }
     #[test]
     fn get_uuid_test() {
-       let device = os::IOPlatformExpertDevice::new().unwrap();
-       let  uuid  = device.io_platform_uuid();
-       println!("uuid=>{}",uuid);
+        let device = os::IOPlatformExpertDevice::new().unwrap();
+        let uuid = device.io_platform_uuid();
+        println!("uuid=>{}", uuid);
     }
 }
 
@@ -69,16 +69,24 @@ pub mod os {
         /// # Examples
         ///
         /// ```
-        /// let expertDevice = mac_expert_device::os::IOPlatformExpertDevice::new();
-        ///  println!("Platform UUID:{}",expertDevice.io_platform_uuid());
-        /// 
+        /// fn main() {
+        ///     let platform_expert_device =  mac_expert_device::os::IOPlatformExpertDevice::new().unwrap();
+        ///     println!("name:{}",platform_expert_device.name());
+        ///     println!("version:{}",platform_expert_device.version());
+        ///     println!("SerialNumber:{}",platform_expert_device.serial_number());
+        ///      println!("Manufacturer:{}",platform_expert_device.manufacturer());
+        ///      println!("IOBusyInterest:{}",platform_expert_device.io_busy_interest());
+        ///     println!("IOInterruptControllers:{}",platform_expert_device.io_interrupt_controllers());
+        // println!("IOPlatformSystemSleepPolicy:{}",platform_expert_device.io_platform_system_sleep_policy());
+        ///     println!("IOPolledInterface:{}",platform_expert_device.io_polled_interface());
+        ///      println!("IOPlatformUuid:{}",platform_expert_device.io_platform_uuid());
+        ///     }         
+        ///
         /// ```
         pub fn new() -> Option<Self> {
             let output = match io_platform_expert_device() {
-                Some(s) =>{
-                    s.into()
-                },
-                None =>  return None,
+                Some(s) => s.into(),
+                None => return None,
             };
             Some(output)
         }
@@ -136,7 +144,7 @@ pub mod os {
         /// ```
         /// let expertDevice = mac_expert_device::os::IOPlatformExpertDevice::new();
         ///  println!("io_polled_interface UUID:{}",expertDevice.io_polled_interface());
-        /// 
+        ///
         /// ```
         pub fn manufacturer(&self) -> String {
             self.manufacturer.to_string()
@@ -400,7 +408,7 @@ pub mod os {
             entry
         }
     }
-     fn io_platform_expert_device() -> Option<String> {
+    fn io_platform_expert_device() -> Option<String> {
         let out = Command::new("ioreg")
             .arg("-d2")
             .arg("-c")
@@ -410,7 +418,7 @@ pub mod os {
         let output = String::from_utf8(out.stdout);
         Some(output.unwrap())
     }
-    pub fn customize_service(service:&str) -> Option<String> {
+    pub fn customize_service(service: &str) -> Option<String> {
         let out = Command::new("ioreg")
             .arg("-d2")
             .arg("-c")

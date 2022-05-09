@@ -38,10 +38,20 @@
 ## Simple 
 
 ```
-       let device = os::IOPlatformExpertDevice::new().unwrap();
-       //get 
-       let  uuid  = device.io_platform_uuid();
-       println!("uuid=>{}",uuid);
+fn main() {
+   let platform_expert_device =  mac_expert_device::os::IOPlatformExpertDevice::new().unwrap();
+   //
+   println!("name:{}",platform_expert_device.name());
+   println!("version:{}",platform_expert_device.version());
+   println!("SerialNumber:{}",platform_expert_device.serial_number());
+   println!("Manufacturer:{}",platform_expert_device.manufacturer());
+   println!("IOBusyInterest:{}",platform_expert_device.io_busy_interest());
+   println!("IOInterruptControllers:{}",platform_expert_device.io_interrupt_controllers());
+   // println!("IOPlatformSystemSleepPolicy:{}",platform_expert_device.io_platform_system_sleep_policy());
+   println!("IOPolledInterface:{}",platform_expert_device.io_polled_interface());
+   println!("IOPlatformUuid:{}",platform_expert_device.io_platform_uuid());
+}
+
 
 ```
 
