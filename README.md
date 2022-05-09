@@ -10,7 +10,7 @@ To use this library, add the following to your Cargo.toml:
 ```toml
 
 [dependencies]
-tree-sitter-stack-graphs = "0.1"
+mac_expert_device = "0.1"
 
 ```
 
