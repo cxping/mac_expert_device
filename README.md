@@ -19,17 +19,27 @@ Check out our [documentation](https://docs.rs/mac_expert_device/latest/x86_64-ap
 
 ```
 fn main() {
-   let platform_expert_device =  mac_expert_device::os::IOPlatformExpertDevice::new().unwrap();
-   //
-   println!("name:{}",platform_expert_device.name());
-   println!("version:{}",platform_expert_device.version());
-   println!("SerialNumber:{}",platform_expert_device.serial_number());
-   println!("Manufacturer:{}",platform_expert_device.manufacturer());
-   println!("IOBusyInterest:{}",platform_expert_device.io_busy_interest());
-   println!("IOInterruptControllers:{}",platform_expert_device.io_interrupt_controllers());
-   // println!("IOPlatformSystemSleepPolicy:{}",platform_expert_device.io_platform_system_sleep_policy());
-   println!("IOPolledInterface:{}",platform_expert_device.io_polled_interface());
-   println!("IOPlatformUuid:{}",platform_expert_device.io_platform_uuid());
+    let expert_device = mac_expert_device::os::IOPlatformExpertDevice::new().unwrap();
+    println!("IOInterruptSpecifiers:{}", expert_device.io_interrupt_specifiers());
+    println!("IOPolledInterface:{}", expert_device.io_polled_interface());
+    println!("IOPlatformUuid:{}", expert_device.io_platform_uuid());
+    println!("SerialNumber:{}", expert_device.serial_number());
+    println!("PlatformFeature:{}", expert_device.platform_feature());
+   //  println!("IOPlatformSystemSleepPolicy:{}",platform_expert_device.io_platform_system_sleep_policy());
+    println!("IOBusyInterest:{}", expert_device.io_busy_interest());
+    println!("TargetType:{}", expert_device.target_type());
+    println!("IOInterruptControllers:{}", expert_device.io_interrupt_controllers());
+    println!("Name:{}", expert_device.name());
+    println!("Version:{}", expert_device.version());
+    println!("Manufacturer:{}", expert_device.manufacturer());
+    println!("Compatible:{}", expert_device.compatible());
+    println!("ProductName:{}", expert_device.product_name());
+    println!("IOPlatformSerialNumber:{}", expert_device.io_platform_serial_number());
+    println!("IOConsoleSecurityInterest:{}", expert_device.io_console_security_interest());
+    println!("ClockFrequency:{}", expert_device.clock_frequency());
+    println!("Model:{}", expert_device.model());
+    println!("BoardId:{}", expert_device.board_id());
+    println!("SystemType:{}", expert_device.system_type());
 }
 
 
