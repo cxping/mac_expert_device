@@ -120,7 +120,7 @@ pub mod os {
         }
 
         pub fn io_interrupt_specifier(&self)-> String{
-            self.io_interrupt_specifier.to_string()
+            self.io_interrupt_specifiers.to_string()
         }
         //io_polled_interface
         pub fn  io_polled_interface(&self)-> String{
@@ -192,7 +192,7 @@ pub mod os {
             self.manufacturer.to_string()
         }
     }
-}
+
     impl Default for IOPlatformExpertDevice {
         fn default() -> Self {
             Self {
