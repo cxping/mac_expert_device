@@ -132,7 +132,7 @@ pub mod os {
             Some(output)
         }
 
-        pub fn io_interrupt_specifier(&self) -> String {
+        pub fn io_interrupt_specifiers(&self) -> String {
             self.io_interrupt_specifiers.to_string()
         }
         //io_polled_interface
