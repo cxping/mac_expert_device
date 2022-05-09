@@ -33,6 +33,34 @@ mod os {}
 pub mod os {
     use std::process::Command;
 
+    /// IOPlatformExpertDevice
+    /// 
+    /// ```
+    /// +-o Root  <class IORegistryEntry, id xxxxxx, retain 17>
+    ///-o xxxxxx  <class IOPlatformExpertDevice, id xxxxxx, registered, matched, active, busy 0 (13368 ms), retain 44>
+    /// {
+    ///      "IOInterruptSpecifiers" = (<xxxxx>)
+    ///      "IOPolledInterface" = "SMCPolledInterface is not serializable"
+    ///      "IOPlatformUUID" = "xxxxxx"
+    ///      "serial-number" = <xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx>
+    ///      "platform-feature" = <xxxxxx>
+    ///      "IOPlatformSystemSleepPolicy" = <xxxxxx>
+    ///      "IOBusyInterest" = "IOCommand is not serializable"
+    ///      "target-type" = <"Mac">
+    ///      "IOInterruptControllers" = ("xxxxxx")
+    ///      "name" = <"/">
+    ///      "version" = <"xxxxxx">
+    ///      "manufacturer" = <"Apple Inc.">
+    ///      "compatible" = <"xxxxxx">
+    ///      "product-name" = <"xxxxxx">
+    ///      "IOPlatformSerialNumber" = "xxxxxx"
+    ///      "IOConsoleSecurityInterest" = "IOCommand is not serializable"
+    ///      "clock-frequency" = <xxxxx>
+    ///      "model" = <"xx">
+    ///      "board-id" = <"xxxxxx">
+    ///      "system-type" = <02>
+    ///}
+    /// ```
     #[derive(Debug)]
     pub struct IOPlatformExpertDevice {
         io_interrupt_specifiers: String,
@@ -90,53 +118,67 @@ pub mod os {
             };
             Some(output)
         }
-        /// io_polled_interface
-        /// IOPolledInterface()
-        pub fn io_polled_interface(&self) -> String {
+
+        pub fn io_interrupt_specifier(&self)-> String{
+            self.io_interrupt_specifier.to_string()
+        }
+        //io_polled_interface
+        pub fn  io_polled_interface(&self)-> String{
             self.io_polled_interface.to_string()
         }
-        ///IOPlatformUuid
-        /// io_platform_uuid()
-        pub fn io_platform_uuid(&self) -> String {
+        pub fn  io_platform_uuid(&self)-> String{
             self.io_platform_uuid.to_string()
         }
-        /// SerialNumber
-        /// serial_number()
-        pub fn serial_number(&self) -> String {
+        pub fn  serial_number(&self)-> String{
             self.serial_number.to_string()
         }
-        /// PlatformFeature
-        /// platform_feature()
-        pub fn platform_feature(&self) -> String {
+        pub fn platform_feature(&self)-> String{
             self.platform_feature.to_string()
         }
-
-        /// IOPlatformSystemSleepPolicy
-        /// io_platform_system_sleep_policy()
-        pub fn io_platform_system_sleep_policy(&self) -> String {
+        pub fn io_platform_system_sleep_policy(&self)-> String{
             self.io_platform_system_sleep_policy.to_string()
         }
-
-        /// IOBusyInterest
-        /// io_busy_interest()
-        pub fn io_busy_interest(&self) -> String {
+        pub fn  io_busy_interest(&self)-> String{
             self.io_busy_interest.to_string()
         }
-        /// IOInterruptControllers
-        /// io_interrupt_controllers()
-        pub fn io_interrupt_controllers(&self) -> String {
+        pub fn  target_type(&self)-> String{
+            self.target_type.to_string()
+        }
+        pub fn  io_interrupt_controllers(&self)-> String{
             self.io_interrupt_controllers.to_string()
         }
-        /// Name
-        /// name()
-        pub fn name(&self) -> String {
+        pub fn  name(&self)-> String{
             self.name.to_string()
         }
-        /// Version
-        /// version()
-        pub fn version(&self) -> String {
+        pub fn  version(&self)-> String{
             self.version.to_string()
         }
+        pub fn compatible(&self)-> String{
+            self.compatible.to_string()
+        }
+        pub fn product_name(&self)-> String{
+            self.product_name.to_string()
+        }
+        pub fn io_platform_serial_number(&self)-> String{
+            self.io_platform_serial_number.to_string()
+        }
+        pub fn io_console_security_interest(&self)-> String{
+            self.io_console_security_interest.to_string()
+        }
+        pub fn clock_frequency(&self)-> String{
+            self.clock_frequency.to_string()
+        }
+        pub fn model(&self)-> String{
+            self.model.to_string()
+        }
+        pub fn board_id(&self)-> String{
+             self.board_id.to_string()
+        }
+        pub fn system_type(&self)-> String{
+
+            self.system_type.to_string()
+        }
+
         /// Manufacturer
         ///
         /// # Examples
@@ -150,37 +192,7 @@ pub mod os {
             self.manufacturer.to_string()
         }
     }
-
-    /**
-    *
-    *
-    * +-o Root  <class IORegistryEntry, id xxxxxx, retain 17>
-     +-o xxxxxx  <class IOPlatformExpertDevice, id xxxxxx, registered, matched, active, busy 0 (13368 ms), retain 44>
-         {
-           "IOInterruptSpecifiers" = (<xxxxx>)
-           "IOPolledInterface" = "SMCPolledInterface is not serializable"
-           "IOPlatformUUID" = "xxxxxx"
-           "serial-number" = <xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx>
-           "platform-feature" = <xxxxxx>
-           "IOPlatformSystemSleepPolicy" = <xxxxxx>
-           "IOBusyInterest" = "IOCommand is not serializable"
-           "target-type" = <"Mac">
-           "IOInterruptControllers" = ("xxxxxx")
-           "name" = <"/">
-           "version" = <"xxxxxx">
-           "manufacturer" = <"Apple Inc.">
-           "compatible" = <"xxxxxx">
-           "product-name" = <"xxxxxx">
-           "IOPlatformSerialNumber" = "xxxxxx"
-           "IOConsoleSecurityInterest" = "IOCommand is not serializable"
-           "clock-frequency" = <xxxxx>
-           "model" = <"xx">
-           "board-id" = <"xxxxxx">
-           "system-type" = <02>
-         }
-    *
-    */
-
+}
     impl Default for IOPlatformExpertDevice {
         fn default() -> Self {
             Self {
