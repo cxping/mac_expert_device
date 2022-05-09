@@ -82,34 +82,62 @@ pub mod os {
             };
             Some(output)
         }
-
+        /// io_polled_interface
+        /// IOPolledInterface()
         pub fn io_polled_interface(&self) -> String {
             self.io_polled_interface.to_string()
         }
+        ///IOPlatformUuid
+        /// io_platform_uuid()
         pub fn io_platform_uuid(&self) -> String {
             self.io_platform_uuid.to_string()
         }
+        /// SerialNumber
+        /// serial_number()
         pub fn serial_number(&self) -> String {
             self.serial_number.to_string()
         }
+        /// PlatformFeature
+        /// platform_feature()
         pub fn platform_feature(&self) -> String {
             self.platform_feature.to_string()
         }
+
+        /// IOPlatformSystemSleepPolicy
+        /// io_platform_system_sleep_policy()
         pub fn io_platform_system_sleep_policy(&self) -> String {
             self.io_platform_system_sleep_policy.to_string()
         }
+
+        /// IOBusyInterest
+        /// io_busy_interest()
         pub fn io_busy_interest(&self) -> String {
             self.io_busy_interest.to_string()
         }
+        /// IOInterruptControllers
+        /// io_interrupt_controllers()
         pub fn io_interrupt_controllers(&self) -> String {
             self.io_interrupt_controllers.to_string()
         }
+        /// Name
+        /// name()
         pub fn name(&self) -> String {
             self.name.to_string()
         }
+        /// Version
+        /// version()
         pub fn version(&self) -> String {
             self.version.to_string()
         }
+        /// Manufacturer
+        ///
+        /// # Examples
+        ///
+        /// ```
+        /// let expertDevice = mac_expert_device::os::IOPlatformExpertDevice::new();
+        ///  println!("io_polled_interface UUID:{}",expertDevice.io_polled_interface());
+        /// 
+        /// ```
         pub fn manufacturer(&self) -> String {
             self.manufacturer.to_string()
         }
