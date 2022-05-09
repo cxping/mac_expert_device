@@ -1,14 +1,18 @@
 [package]
 name = "mac_expert_device"
-version = "0.1.4"
+version = "0.1.5"
 edition = "2021"
 authors = ["chping@iowk.com"]
 description = "Get MacOS hardware information through ioreg"
 license = "MIT OR Apache-2.0"
 repository = "https://github.com/cxping/mac_expert_device.git"
 
-keywords = ["macos","sys-info",""]
+keywords = ["macos","sys-info","sys"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+
+
+[package.metadata.docs.rs]
+targets = ["x86_64-apple-darwin"]
