@@ -34,7 +34,7 @@ pub mod os {
     use std::process::Command;
 
     /// IOPlatformExpertDevice
-    /// 
+    ///
     /// ```
     /// +-o Root  <class IORegistryEntry, id xxxxxx, retain 17>
     ///-o xxxxxx  <class IOPlatformExpertDevice, id xxxxxx, registered, matched, active, busy 0 (13368 ms), retain 44>
@@ -97,18 +97,31 @@ pub mod os {
         /// # Examples
         ///
         /// ```
+        /// 
         /// fn main() {
-        ///     let platform_expert_device =  mac_expert_device::os::IOPlatformExpertDevice::new().unwrap();
-        ///     println!("name:{}",platform_expert_device.name());
-        ///     println!("version:{}",platform_expert_device.version());
-        ///     println!("SerialNumber:{}",platform_expert_device.serial_number());
-        ///      println!("Manufacturer:{}",platform_expert_device.manufacturer());
-        ///      println!("IOBusyInterest:{}",platform_expert_device.io_busy_interest());
-        ///     println!("IOInterruptControllers:{}",platform_expert_device.io_interrupt_controllers());
-        // println!("IOPlatformSystemSleepPolicy:{}",platform_expert_device.io_platform_system_sleep_policy());
-        ///     println!("IOPolledInterface:{}",platform_expert_device.io_polled_interface());
-        ///      println!("IOPlatformUuid:{}",platform_expert_device.io_platform_uuid());
-        ///     }         
+        ///     let expert_device = mac_expert_device::os::IOPlatformExpertDevice::new().unwrap();
+        ///     println!("IOInterruptSpecifiers:{}", expert_device.io_interrupt_specifier());
+        ///     println!("IOPolledInterface:{}", expert_device.io_polled_interface());
+        ///     println!("IOPlatformUuid:{}", expert_device.io_platform_uuid());
+        ///     println!("SerialNumber:{}", expert_device.serial_number());
+        ///     println!("PlatformFeature:{}", expert_device.platform_feature());
+        ///     println!("IOPlatformSystemSleepPolicy:{}",platform_expert_device.io_platform_system_sleep_policy());
+        ///     println!("IOBusyInterest:{}", expert_device.io_busy_interest());
+        ///     println!("TargetType:{}", expert_device.target_type());
+        ///     println!("IOInterruptControllers:{}", expert_device.io_interrupt_controllers());
+        ///     println!("Name:{}", expert_device.name());
+        ///     println!("Version:{}", expert_device.version());
+        ///     println!("Manufacturer:{}", expert_device.manufacturer());
+        ///     println!("Compatible:{}", expert_device.compatible());
+        ///     println!("ProductName:{}", expert_device.product_name());
+        ///     println!("IOPlatformSerialNumber:{}", expert_device.io_platform_serial_number());
+        ///     println!("IOConsoleSecurityInterest:{}", expert_device.io_console_security_interest());
+        ///     println!("ClockFrequency:{}", expert_device.clock_frequency());
+        ///     println!("Model:{}", expert_device.model());
+        ///     println!("BoardId:{}", expert_device.board_id());
+        ///     println!("SystemType:{}", expert_device.system_type());
+        /// }
+        /// 
         ///
         /// ```
         pub fn new() -> Option<Self> {
@@ -119,63 +132,62 @@ pub mod os {
             Some(output)
         }
 
-        pub fn io_interrupt_specifier(&self)-> String{
+        pub fn io_interrupt_specifier(&self) -> String {
             self.io_interrupt_specifiers.to_string()
         }
         //io_polled_interface
-        pub fn  io_polled_interface(&self)-> String{
+        pub fn io_polled_interface(&self) -> String {
             self.io_polled_interface.to_string()
         }
-        pub fn  io_platform_uuid(&self)-> String{
+        pub fn io_platform_uuid(&self) -> String {
             self.io_platform_uuid.to_string()
         }
-        pub fn  serial_number(&self)-> String{
+        pub fn serial_number(&self) -> String {
             self.serial_number.to_string()
         }
-        pub fn platform_feature(&self)-> String{
+        pub fn platform_feature(&self) -> String {
             self.platform_feature.to_string()
         }
-        pub fn io_platform_system_sleep_policy(&self)-> String{
+        pub fn io_platform_system_sleep_policy(&self) -> String {
             self.io_platform_system_sleep_policy.to_string()
         }
-        pub fn  io_busy_interest(&self)-> String{
+        pub fn io_busy_interest(&self) -> String {
             self.io_busy_interest.to_string()
         }
-        pub fn  target_type(&self)-> String{
+        pub fn target_type(&self) -> String {
             self.target_type.to_string()
         }
-        pub fn  io_interrupt_controllers(&self)-> String{
+        pub fn io_interrupt_controllers(&self) -> String {
             self.io_interrupt_controllers.to_string()
         }
-        pub fn  name(&self)-> String{
+        pub fn name(&self) -> String {
             self.name.to_string()
         }
-        pub fn  version(&self)-> String{
+        pub fn version(&self) -> String {
             self.version.to_string()
         }
-        pub fn compatible(&self)-> String{
+        pub fn compatible(&self) -> String {
             self.compatible.to_string()
         }
-        pub fn product_name(&self)-> String{
+        pub fn product_name(&self) -> String {
             self.product_name.to_string()
         }
-        pub fn io_platform_serial_number(&self)-> String{
+        pub fn io_platform_serial_number(&self) -> String {
             self.io_platform_serial_number.to_string()
         }
-        pub fn io_console_security_interest(&self)-> String{
+        pub fn io_console_security_interest(&self) -> String {
             self.io_console_security_interest.to_string()
         }
-        pub fn clock_frequency(&self)-> String{
+        pub fn clock_frequency(&self) -> String {
             self.clock_frequency.to_string()
         }
-        pub fn model(&self)-> String{
+        pub fn model(&self) -> String {
             self.model.to_string()
         }
-        pub fn board_id(&self)-> String{
-             self.board_id.to_string()
+        pub fn board_id(&self) -> String {
+            self.board_id.to_string()
         }
-        pub fn system_type(&self)-> String{
-
+        pub fn system_type(&self) -> String {
             self.system_type.to_string()
         }
 
@@ -430,7 +442,7 @@ pub mod os {
         let output = String::from_utf8(out.stdout);
         Some(output.unwrap())
     }
-    
+
     pub fn customize_service(service: &str) -> Option<String> {
         let out = Command::new("ioreg")
             .arg("-d2")
