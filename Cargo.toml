@@ -6,7 +6,7 @@ authors = ["chping@iowk.com"]
 description = "Get MacOS hardware information through ioreg"
 license = "MIT OR Apache-2.0"
 repository = "https://github.com/cxping/mac_expert_device.git"
-
+documentation = "https://docs.rs/mac_expert_device/latest/x86_64-apple-darwin/mac_expert_device/all.html"
 keywords = ["macos","sys-info","sys"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
