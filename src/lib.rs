@@ -430,6 +430,7 @@ pub mod os {
         let output = String::from_utf8(out.stdout);
         Some(output.unwrap())
     }
+    
     pub fn customize_service(service: &str) -> Option<String> {
         let out = Command::new("ioreg")
             .arg("-d2")
