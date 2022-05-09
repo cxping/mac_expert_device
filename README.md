@@ -1,6 +1,4 @@
 # GET  Mac  Hardware overview 
-# 获取Mac 硬件概览信息 
-
 
 - IOPlatformUUID
 
