@@ -9,7 +9,9 @@ mod tests {
     }
     #[test]
     fn get_uuid_test() {
-        // let s  = os::get_uuid();
+       let device = os::IOPlatformExpertDevice::new().unwrap();
+       let  uuid  = device.io_platform_uuid();
+       println!("uuid=>{}",uuid);
     }
 }
 
@@ -21,11 +23,11 @@ mod os {}
 #[cfg(target_os = "linux")]
 mod os {}
 
-#[derive(Debug)]
-struct SystemInfo {
-    uuid: String,
-    hardware: String,
-}
+// #[derive(Debug)]
+// struct SystemInfo {
+//     uuid: String,
+//     hardware: String,
+// }
 
 #[cfg(target_os = "macos")]
 pub mod os {
@@ -54,14 +56,34 @@ pub mod os {
         board_id: String,
         system_type: String,
     }
+
     impl IOPlatformExpertDevice {
         pub fn from(s: String) -> Option<Self> {
-            if (!s.is_empty()) {
+            if !s.is_empty() {
                 return None;
             }
             Some(s.into())
         }
-        pub fn get_io_polled_interface(&self) -> String {
+        /// new create  IOPlatformExpertDevice
+        ///
+        /// # Examples
+        ///
+        /// ```
+        /// let expertDevice = mac_expert_device::os::IOPlatformExpertDevice::new();
+        ///  println!("Platform UUID:{}",expertDevice.io_platform_uuid());
+        /// 
+        /// ```
+        pub fn new() -> Option<Self> {
+            let output = match io_platform_expert_device() {
+                Some(s) =>{
+                    s.into()
+                },
+                None =>  return None,
+            };
+            Some(output)
+        }
+
+        pub fn io_polled_interface(&self) -> String {
             self.io_polled_interface.to_string()
         }
         pub fn io_platform_uuid(&self) -> String {
@@ -350,11 +372,21 @@ pub mod os {
             entry
         }
     }
-    pub fn io_platform_expert_device() -> Option<String> {
+     fn io_platform_expert_device() -> Option<String> {
         let out = Command::new("ioreg")
             .arg("-d2")
             .arg("-c")
             .arg("IOPlatformExpertDevice")
+            .output()
+            .expect("failed to execute process");
+        let output = String::from_utf8(out.stdout);
+        Some(output.unwrap())
+    }
+    pub fn customize_service(service:&str) -> Option<String> {
+        let out = Command::new("ioreg")
+            .arg("-d2")
+            .arg("-c")
+            .arg(service)
             .output()
             .expect("failed to execute process");
         let output = String::from_utf8(out.stdout);
